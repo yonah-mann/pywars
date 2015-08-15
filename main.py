@@ -19,9 +19,9 @@ import mine
 # to handle this.
 ###############################################################################
 import bots.Daedalus
+import bots.Page
 import bots.Icarus
 import bots.Denton
-import bots.Page
 ###############################################################################
 
 # Image locations
@@ -43,13 +43,6 @@ MINE_SIZE = 25
 PANEL_SIZE = 200
 BULLET_SIZE = 5
 BOT_SIZE = 50
-STATS_BAR_W = 200
-SCREEN_WIDTH = 1000
-SCREEN_HEIGHT = SCREEN_WIDTH - STATS_BAR_W
-ARENA_START_X = STATS_BAR_W
-ARENA_END_X = SCREEN_WIDTH
-ARENA_START_Y = 0
-ARENA_END_Y = SCREEN_HEIGHT
 
 # Program properties
 SCREEN_TITLE = 'A.I. Arena: Deathmatch'
@@ -109,8 +102,8 @@ def process_bullets():
         bullet.move()
 
         # If bullet goes out of bounds, remove it
-        if (bullet.x > ARENA_END_X or bullet.x < ARENA_START_X or
-                bullet.y > ARENA_END_Y or bullet.y < ARENA_START_Y):
+        if (bullet.x > arena_globals.ARENA_END_X or bullet.x < arena_globals.ARENA_START_X or
+                bullet.y > arena_globals.ARENA_END_Y or bullet.y < arena_globals.ARENA_START_Y):
             arena_globals.bullets.remove(bullet)
 
         # Check for collission with bot. If so, damage bot and remove bullet.
@@ -152,14 +145,14 @@ def bot_move(bot):
     bot.y += bot.moveY * bot.MOVE_SPEED
 
     # Stop the bot from moving out of bounds
-    if bot.x + (bot.moveX * bot.MOVE_SPEED) < ARENA_START_X:
-        bot.x = ARENA_START_X
-    elif bot.x + (bot.moveX * bot.MOVE_SPEED) + BOT_SIZE > ARENA_END_X:
-        bot.x = ARENA_END_X - BOT_SIZE
-    if bot.y + (bot.moveY * bot.MOVE_SPEED) < ARENA_START_Y:
-        bot.y = ARENA_START_Y
-    elif bot.y + (bot.moveY * bot.MOVE_SPEED) + BOT_SIZE > ARENA_END_Y:
-        bot.y = ARENA_END_Y - BOT_SIZE
+    if bot.x + (bot.moveX * bot.MOVE_SPEED) < arena_globals.ARENA_START_X:
+        bot.x = arena_globals.ARENA_START_X
+    elif bot.x + (bot.moveX * bot.MOVE_SPEED) + BOT_SIZE > arena_globals.ARENA_END_X:
+        bot.x = arena_globals.ARENA_END_X - BOT_SIZE
+    if bot.y + (bot.moveY * bot.MOVE_SPEED) < arena_globals.ARENA_START_Y:
+        bot.y = arena_globals.ARENA_START_Y
+    elif bot.y + (bot.moveY * bot.MOVE_SPEED) + BOT_SIZE > arena_globals.ARENA_END_Y:
+        bot.y = arena_globals.ARENA_END_Y - BOT_SIZE
 
 
 def bot_shoot(bot):
@@ -251,17 +244,17 @@ def process_bots():
 def position_bots():
     """ Puts the four bots in their starting positions.
         Should probably put this in some sorta loop. Oh well."""
-    arena_globals.bots[0].x = ARENA_START_X + BOT_START_OFFSET
-    arena_globals.bots[0].y = ARENA_START_Y + BOT_START_OFFSET
+    arena_globals.bots[0].x = arena_globals.ARENA_START_X + BOT_START_OFFSET
+    arena_globals.bots[0].y = arena_globals.ARENA_START_Y + BOT_START_OFFSET
 
-    arena_globals.bots[1].x = ARENA_END_X - BOT_START_OFFSET - BOT_SIZE
-    arena_globals.bots[1].y = ARENA_START_Y + BOT_START_OFFSET
+    arena_globals.bots[1].x = arena_globals.ARENA_END_X - BOT_START_OFFSET - BOT_SIZE
+    arena_globals.bots[1].y = arena_globals.ARENA_START_Y + BOT_START_OFFSET
 
-    arena_globals.bots[2].x = ARENA_START_X + BOT_START_OFFSET
-    arena_globals.bots[2].y = ARENA_END_Y - BOT_START_OFFSET - BOT_SIZE
+    arena_globals.bots[2].x = arena_globals.ARENA_START_X + BOT_START_OFFSET
+    arena_globals.bots[2].y = arena_globals.ARENA_END_Y - BOT_START_OFFSET - BOT_SIZE
 
-    arena_globals.bots[3].x = ARENA_END_X - BOT_START_OFFSET - BOT_SIZE
-    arena_globals.bots[3].y = ARENA_END_Y - BOT_START_OFFSET - BOT_SIZE
+    arena_globals.bots[3].x = arena_globals.ARENA_END_X - BOT_START_OFFSET - BOT_SIZE
+    arena_globals.bots[3].y = arena_globals.ARENA_END_Y - BOT_START_OFFSET - BOT_SIZE
 
 
 def load_bot_images():
@@ -277,7 +270,7 @@ def draw_bots():
 def draw_bot_taunts():
     """ NEEDS WORK! Magic numbers!"""
     for bot in arena_globals.bots:
-        if bot.x > (ARENA_END_X - 100):
+        if bot.x > (arena_globals.ARENA_END_X - 100):
             xpos = bot.x - (7 * len(bot.taunt))
         else:
             xpos = bot.x + BOT_SIZE + 10
@@ -372,7 +365,7 @@ def process_explosions():
 
 
 # Initialize some stuff
-screen = create_window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, ICON_FILE)
+screen = create_window(arena_globals.SCREEN_WIDTH, arena_globals.SCREEN_HEIGHT, SCREEN_TITLE, ICON_FILE)
 fps_clock = pygame.time.Clock()
 position_bots()
 
@@ -399,7 +392,7 @@ while 1:
 
     # Clear screen and draw background
     screen.fill(COLOR_BLACK)
-    screen.blit(arena_bg, (STATS_BAR_W, 0))
+    screen.blit(arena_bg, (arena_globals.STATS_BAR_W, 0))
 
     draw_char_panels()
     draw_mines()
