@@ -19,9 +19,9 @@ import mine
 # to handle this.
 ###############################################################################
 import bots.Daedalus
+import bots.Denton
 import bots.Page
 import bots.Icarus
-import bots.Denton
 ###############################################################################
 
 # Image locations
@@ -156,9 +156,7 @@ def bot_move(bot):
 
 
 def bot_shoot(bot):
-    if (isinstance(bot.shootAtX, int) and isinstance(bot.shootAtY, int) and
-       bot.ammo >= 1):
-
+    if bot.ammo >= 1:
         bot.ammo -= 1
         startx = bot.x + (BOT_SIZE / 2)
         starty = bot.y + (BOT_SIZE / 2)
