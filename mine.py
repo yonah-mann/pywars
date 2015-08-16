@@ -4,7 +4,7 @@ import arena_globals
 """ Class detailing how a mine operates. You should not modify this file in
 any way! """
 class Mine:
-    BLAST_RADIUS = 100  # Anything caught in this radius will be damaged.
+    BLAST_RADIUS = 50  # Anything caught in this radius will be damaged.
     MINE_DAMAGE = 50
 
     def __init__(self, owner_bot, placeX, placeY):
