@@ -1,3 +1,5 @@
+![Image of AI Arena](https://raw.githubusercontent.com/kurtjd/ai-arena/master/screenshot.png)
+
 A.I. Arena: Deathmatch
 =======================
 A.I. Arena is a battleground where programmed bots fight to the death to earn the title of most intelligent unintelligent-agent in all of Computerdom! With few rules, there is a large degree of creativity and outside-the-box thinking required to be successful. However, with some wits and a wee bit o' luck, your potential is virtually unlimited!
