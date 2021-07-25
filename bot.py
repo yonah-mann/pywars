@@ -1,9 +1,10 @@
 import arena_globals
 
 
-""" The base class from which all bots inherit. No code should be written in
-here, nor should any code be modified in here. """
 class Bot:
+    """ The base class from which all bots inherit. No code should be written in
+    here, nor should any code be modified in here. """
+
     # Bot constants. DO NOT MODIFY!
     MAX_HEALTH = 100
     MAX_AMMO = 20
@@ -65,14 +66,13 @@ class Bot:
         # Append the bot to the list once it's been imported
         arena_globals.bots.append(self)
 
-
     def say(self, saywhat):
         """ Allows the bot to say something, such as a taunt.
             Max 30 characters."""
+
         if len(saywhat) > 30:
             saywhat = saywhat[0:31]
         self.taunt = saywhat
-
 
     def set_name(self, botname):
         if len(botname) > 10:

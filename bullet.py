@@ -1,9 +1,10 @@
 import arena_globals
 import math
 
-""" Class detailing how a bullet operates. You should not modify this file in
-any way! """
+
 class Bullet:
+    """ Class detailing how a bullet operates. You should not modify this file in any way! """
+
     MOVE_SPEED = 7
 
     def __init__(self, owner_bot, startX, startY, targetX, targetY):

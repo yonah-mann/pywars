@@ -1,9 +1,11 @@
 import pygame
 import arena_globals
 
-""" Class detailing how a mine operates. You should not modify this file in
-any way! """
+
 class Mine:
+    """ Class detailing how a mine operates. You should not modify this file in
+    any way! """
+
     BLAST_RADIUS = 50  # Anything caught in this radius will be damaged.
     MINE_DAMAGE = 50
 
@@ -16,6 +18,7 @@ class Mine:
     def detonate(self, mine_size, bot_size):
         """ Called when a mine is stepped on. The mine explodes damaging
             everything nearby, including its owner. """
+
         for bot in arena_globals.bots:
             # Determine the blast boundaries
             blast_x_min = self.x - self.BLAST_RADIUS + (mine_size / 2)
@@ -33,5 +36,5 @@ class Mine:
         arena_globals.mines.remove(self)
         # Add an explosion to the explosions list
         arena_globals.explosions.append({'x': self.x - (self.BLAST_RADIUS / 2),
-                                         'y': self.y  - (self.BLAST_RADIUS / 2),
+                                         'y': self.y - (self.BLAST_RADIUS / 2),
                                          'count': 0})

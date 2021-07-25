@@ -61,7 +61,7 @@ def set_icon(icon_file):
     try:
         pygame.display.set_icon(pygame.image.load(icon_file))
     except:
-        print 'Icon could not be loaded!'
+        print('Icon could not be loaded!')
 
 
 def load_image(filename):
@@ -167,7 +167,7 @@ def bot_shoot(bot):
 def bot_heal(bot):
     # Used so the bot only heals every other frame
     bot.healtick += 1
-    if bot.health < bot.MAX_HEALTH  and (bot.healtick % 2):
+    if bot.health < bot.MAX_HEALTH and (bot.healtick % 2):
         bot.health += 1
 
 
@@ -286,7 +286,7 @@ def draw_mines():
 def draw_text_label(text_value, font_size, font_color,
                     position, font_type=None):
     font = pygame.font.Font(font_type, font_size)
-    text = font.render(text_value, 1, font_color)
+    text = font.render(text_value, True, font_color)
     text_rect = text.get_rect(topleft=position)
     screen.blit(text, text_rect)
 
@@ -321,7 +321,7 @@ def draw_char_panel(bot, ypos):
     if bot.shots_fired == 0:
         accuracy = 100
     else:
-        accuracy = int(round(((bot.hits) /
+        accuracy = int(round((bot.hits /
                            float(bot.shots_fired)) * 100))
 
     draw_text_label('Accuracy: ' + str(accuracy) + '%',
@@ -381,7 +381,6 @@ while 1:
     # Set the title which also displays the FPS
     pygame.display.set_caption(SCREEN_TITLE + ' - FPS: ' +
                                str(round(fps_clock.get_fps(), 1)))
-
 
     handle_input()
     process_bots()
