@@ -2,7 +2,7 @@
 
 PyWars
 =======================
-PyWars is a battleground where programmed bots fight to the death to for the glory of their makers! With few rules, there is a large degree of creativity and outside-the-box thinking required to be successful. However, with some wits and a wee bit o' luck, your potential is virtually unlimited!
+PyWars is a battleground where programmed bots fight to the death to for the glory of their makers! With few rules, there is a large degree of creativity and outside-the-box thinking required to be successful.
 
 
 How to Participate
