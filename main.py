@@ -1,6 +1,6 @@
 ###############################################################################
 #                                                                             #
-# The main A.I. Arena file. No code in here should be modified, except adding #
+# The main PyWars file. No code in here should be modified, except adding #
 # more bot file imports.                                                      #
 #                                                                             #
 ###############################################################################
@@ -45,7 +45,7 @@ BULLET_SIZE = 5
 BOT_SIZE = 50
 
 # Program properties
-SCREEN_TITLE = 'A.I. Arena: Deathmatch'
+SCREEN_TITLE = 'PyWars'
 FPS = 30
 
 # Miscellaneous
