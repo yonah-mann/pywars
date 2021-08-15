@@ -1,8 +1,8 @@
-![Image of AI Arena](https://raw.githubusercontent.com/kurtjd/ai-arena/master/screenshot.png)
+![Image of PyWars](https://raw.githubusercontent.com/kurtjd/pywars/master/screenshot.png)
 
-A.I. Arena: Deathmatch
+PyWars
 =======================
-A.I. Arena is a battleground where programmed bots fight to the death to earn the title of most intelligent unintelligent-agent in all of Computerdom! With few rules, there is a large degree of creativity and outside-the-box thinking required to be successful. However, with some wits and a wee bit o' luck, your potential is virtually unlimited!
+PyWars is a battleground where programmed bots fight to the death to for the glory of their makers! With few rules, there is a large degree of creativity and outside-the-box thinking required to be successful. However, with some wits and a wee bit o' luck, your potential is virtually unlimited!
 
 
 How to Participate
@@ -20,7 +20,7 @@ It's quite simple, really. The entire framework and engine has already been desi
 
 Actions
 =======
-A.I. Arena involves a lot of tactical decision making. As previously mentioned, your bot gets to take one action per frame. It is up to you and your bot to decide on which action that might be. Below is a list of the different possible actions and a brief explanation:
+PyWars involves a lot of tactical decision making. As previously mentioned, your bot gets to take one action per frame. It is up to you and your bot to decide on which action that might be. Below is a list of the different possible actions and a brief explanation:
 
 MOVE:       Move one step in the x and y direction by amount specified (see BotSkeleton.py for more details).
 SHOOT:      Shoot a bullet at the coordinates specified (again, see BotSkeleton.py for more details).
@@ -60,19 +60,13 @@ There are most likely things I'm forgetting or haven't though of. Really just us
 Frequently Asked Questions
 ==========================
 Q: What do I need to participate?
-A: Besides the files I've provided, you need Python 2.7 installed (preferrably 2.7.4) as well as the latest version of Pygame (v1.9.1)
-
-Q: Why Python?
-A: Why not? Although I'm not all that fluent in Python myself, it's a great language for this kind of thing. This competition isn't to see who can deal with memory management and segfaults the quickest, it's to see who can develop the best battle bot.
-
-Q: Why not Python 3?
-A: Honestly, I'm just more familiar with Python 2.
+A: Besides the files I've provided, you need Python 3 installed as well as the latest version of Pygame.
 
 Q: Do I need to know how to use Pygame to participate?
 A: Not at all! Pygame is just used for the back-end of the framework. However you still need to install it in order to test your bot.
 
 Q: Where can I get Pygame?
-A: http://www.pygame.org/download.shtml (Download the 1.9.1 release). The installation process is pretty straight-forward.
+A: http://www.pygame.org/download.shtml (Download the latest release). The installation process is pretty straight-forward.
 
 Q: How does this differ from other battle bot type games?
 A: Those games either offer a very strict set of instructions to work with, or offer a very limited API. A.I. Arena restricts you to a few actions, however there is no 'API' and the means of deciding which action to take are only as limited as the Python language itself.
@@ -84,7 +78,7 @@ Q: What is the deadline?
 A: No deadline yet. I want to see how much interest there is first then decide.
 
 Q: What do I get for winning?
-A: This tournament is mainly meant for fun, but I'll throw in a $20 Amazon gift-card to the champion.
+A: This tournament is mainly meant for fun, so just the pride knowing you created the best bot.
 
 Q: How can I watch battles play out?
 A: I will screen capture the battle and upload the videos to Youtube. I will also provide the source so you can run it yourself.
