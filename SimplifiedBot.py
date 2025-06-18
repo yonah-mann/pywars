@@ -15,10 +15,10 @@ class SimplifiedBot(Bot):
 
     def move_up(self):
         self.moveX = 0
-        self.moveY = 1
+        self.moveY = -1
         self.action = self.ACTION_MOVE
 
     def move_down(self):
         self.moveX = 0
-        self.moveY = -1
+        self.moveY = 1
         self.action = self.ACTION_MOVE

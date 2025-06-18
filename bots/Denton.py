@@ -1,10 +1,10 @@
 import sys
 sys.path.append("..")
-import bot
+from SimplifiedBot import SimplifiedBot
 import arena_globals
 
 
-class Denton(bot.Bot):
+class Denton(SimplifiedBot):
     """ Class name and file name can be whatever you want, but make sure they are
     names that will be unique. Most of your code will go in the do_action() method.
     Ultimately this method will decide which action to take by setting the'action'
@@ -24,7 +24,7 @@ class Denton(bot.Bot):
         #######################################################################
 
         # Leave this alone
-        bot.Bot.__init__(self)
+        super().__init__()
 
     ###########################################################################
     def close_bot(self):
@@ -62,9 +62,7 @@ class Denton(bot.Bot):
             self.action = self.ACTION_HEAL
         elif self.action != self.ACTION_SHOOT and self.action != self.ACTION_RELOAD:
             if not self.close_bot():
-                self.moveX = 1
-                self.moveY = -1
-                self.action = self.ACTION_MOVE
+                self.move_down()
         elif self.action == self.ACTION_SHOOT:
             if self.ammo == 0:
                 self.action = self.ACTION_RELOAD
