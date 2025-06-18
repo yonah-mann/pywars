@@ -46,7 +46,6 @@ class Bot:
         self.x = 0  # The bot's current x position
         self.y = 0  # The bot's current y position
         self.image = None  # The bot's image
-        self.taunt = ''  # The bot's taunt message
 
         # These are used to slow down the rate of healing and reloading
         self.reloadtick = 0
@@ -65,14 +64,6 @@ class Bot:
 
         # Append the bot to the list once it's been imported
         arena_globals.bots.append(self)
-
-    def say(self, saywhat):
-        """ Allows the bot to say something, such as a taunt.
-            Max 30 characters."""
-
-        if len(saywhat) > 30:
-            saywhat = saywhat[0:31]
-        self.taunt = saywhat
 
     def set_name(self, botname):
         if len(botname) > 10:

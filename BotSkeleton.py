@@ -76,20 +76,6 @@ class CHANGE_ME(bot.Bot):
         pass
     ###########################################################################
 
-    ###########################################################################
-    def victory_dance(self):
-        """
-        The victory_dance() method is called if your bot wins a match. Since it
-        is only called at the end, do whatever you want in here. Go crazy!
-        """
-
-        # Write
-        # a bunch
-        # of code
-        # here!
-        pass
-    ###########################################################################
-
 
 """
 Make sure to change this to your class name. This is here so that the bot

@@ -49,7 +49,6 @@ class Page(bot.Bot):
         # a bunch
         # of code
         # here!
-        self.say('I will be pure light!')
         if self.mine_int <= 0:
             self.action = self.ACTION_MINE
             self.mine_int = 30
@@ -58,16 +57,6 @@ class Page(bot.Bot):
             self.moveX = -1
             self.moveY = -1
             self.action = self.ACTION_MOVE
-    ###########################################################################
-
-    ###########################################################################
-    def victory_dance(self):
-        """ The victory_dance() method is called if your bot wins a match. Since it
-        is only called at the end, do whatever you want in here. Go crazy! """
-
-        self.x += 5
-        self.y += 5
-        self.say('I... AM... GOD!')
     ###########################################################################
 
 

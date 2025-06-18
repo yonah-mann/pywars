@@ -38,7 +38,6 @@ COLOR_BLACK = (0, 0, 0)
 COLOR_WHITE = (255, 255, 255)
 
 # Sizes and dimensions
-TAUNT_SIZE = 16
 MINE_SIZE = 25
 PANEL_SIZE = 200
 BULLET_SIZE = 5
@@ -52,7 +51,6 @@ FPS = 30
 BOT_START_OFFSET = 10
 BOT_IMG_EXT = '.jpg'
 BULLET_DAMAGE = 5
-TAUNT_COLOR = COLOR_WHITE
 
 
 # Mundane functions
@@ -229,7 +227,7 @@ def process_bots():
     """ Loops through all bots and performs the action each bot chose. """
     # If last bot standing, perform victory dance!
     if len(arena_globals.bots) == 1:
-        arena_globals.bots[0].victory_dance()
+        # TODO YONAH: Add winner message
         return
 
     for bot in arena_globals.bots:
@@ -263,17 +261,6 @@ def load_bot_images():
 def draw_bots():
     for bot in arena_globals.bots:
         screen.blit(bot.image, (bot.x, bot.y))
-
-
-def draw_bot_taunts():
-    """ NEEDS WORK! Magic numbers!"""
-    for bot in arena_globals.bots:
-        if bot.x > (arena_globals.ARENA_END_X - 100):
-            xpos = bot.x - (7 * len(bot.taunt))
-        else:
-            xpos = bot.x + BOT_SIZE + 10
-        ypos = bot.y + (BOT_SIZE / 2) - 10
-        draw_text_label(bot.taunt, TAUNT_SIZE, TAUNT_COLOR, (xpos, ypos))
 
 
 # Functions pertaining to mines
@@ -395,7 +382,6 @@ while 1:
     draw_mines()
     draw_bullets()
     draw_bots()
-    draw_bot_taunts()
     draw_explosions()
 
     pygame.display.flip()

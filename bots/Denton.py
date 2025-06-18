@@ -58,7 +58,6 @@ class Denton(bot.Bot):
         # a bunch
         # of code
         # here!
-        self.say('Take your best shot.')
         if self.health < 30:
             self.action = self.ACTION_HEAL
         elif self.action != self.ACTION_SHOOT and self.action != self.ACTION_RELOAD:
@@ -72,14 +71,6 @@ class Denton(bot.Bot):
         elif self.action == self.ACTION_RELOAD:
             if self.ammo == self.MAX_AMMO:
                 self.action = self.ACTION_MOVE
-    ###########################################################################
-
-    ###########################################################################
-    def victory_dance(self):
-        """ The victory_dance() method is called if your bot wins a match. Since it
-        is only called at the end, do whatever you want in here. Go crazy! """
-
-        pass
     ###########################################################################
 
 
