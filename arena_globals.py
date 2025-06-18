@@ -9,6 +9,7 @@ ARENA_START_X = STATS_BAR_W
 ARENA_END_X = SCREEN_WIDTH
 ARENA_START_Y = 0
 ARENA_END_Y = SCREEN_HEIGHT
+GRID_SIZE = 50
 
 # List containing instances of all living bots.
 bots = []

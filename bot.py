@@ -8,7 +8,7 @@ class Bot:
     # Bot constants. DO NOT MODIFY!
     MAX_HEALTH = 100
     MAX_AMMO = 20
-    MOVE_SPEED = 4
+    MOVE_SPEED = arena_globals.GRID_SIZE
     MAX_MINES = 5
 
     # List of possible actions. DO NOT MODIFY!

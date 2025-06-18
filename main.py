@@ -5,6 +5,8 @@
 #                                                                             #
 ###############################################################################
 
+import os
+import random
 import pygame
 import pygame.locals
 import sys
@@ -41,7 +43,7 @@ COLOR_WHITE = (255, 255, 255)
 MINE_SIZE = 25
 PANEL_SIZE = 200
 BULLET_SIZE = 5
-BOT_SIZE = 50
+BOT_SIZE = arena_globals.GRID_SIZE
 
 # Program properties
 SCREEN_TITLE = 'PyWars'
@@ -254,9 +256,15 @@ def position_bots():
 
 
 def load_bot_images():
-    for bot in arena_globals.bots:
-        bot.image = load_image('bots/images/' + bot.name + BOT_IMG_EXT)
+    images_path = 'bots/images/'
+    images = os.listdir(images_path)
+    random.shuffle(images)
 
+    images = images[:len(arena_globals.bots)]  # Limit to number of bots
+
+    # Shuffle and assign unique images
+    for bot, image_path in zip(arena_globals.bots, images):
+        bot.image = load_image(os.path.join(images_path, image_path))
 
 def draw_bots():
     for bot in arena_globals.bots:
@@ -348,6 +356,13 @@ def process_explosions():
         if expl['count'] >= FPS / 2:
             arena_globals.explosions.remove(expl)
 
+def draw_grid():
+    for x in range(arena_globals.ARENA_START_X, arena_globals.ARENA_END_X, arena_globals.GRID_SIZE):
+        pygame.draw.line(screen, (arena_globals.GRID_SIZE, arena_globals.GRID_SIZE, arena_globals.GRID_SIZE), (x, arena_globals.ARENA_START_Y), (x, arena_globals.ARENA_END_Y))
+
+    for y in range(arena_globals.ARENA_START_Y, arena_globals.ARENA_END_Y, arena_globals.GRID_SIZE):
+        pygame.draw.line(screen, (arena_globals.GRID_SIZE, arena_globals.GRID_SIZE, arena_globals.GRID_SIZE), (arena_globals.ARENA_START_X, y), (arena_globals.ARENA_END_X, y))
+
 
 # Initialize some stuff
 screen = create_window(arena_globals.SCREEN_WIDTH, arena_globals.SCREEN_HEIGHT, SCREEN_TITLE, ICON_FILE)
@@ -365,6 +380,7 @@ explosion_img = load_image(EXPLOSION_IMG_FILE)
 
 # Main Loop
 while 1:
+    from time import sleep; sleep(1)
     # Set the title which also displays the FPS
     pygame.display.set_caption(SCREEN_TITLE + ' - FPS: ' +
                                str(round(fps_clock.get_fps(), 1)))
@@ -377,6 +393,7 @@ while 1:
     # Clear screen and draw background
     screen.fill(COLOR_BLACK)
     screen.blit(arena_bg, (arena_globals.STATS_BAR_W, 0))
+    draw_grid()
 
     draw_char_panels()
     draw_mines()
