@@ -38,6 +38,7 @@ EXPLOSION_IMG_FILE = 'images/explosion.jpg'
 # Colors
 COLOR_BLACK = (0, 0, 0)
 COLOR_WHITE = (255, 255, 255)
+COLOR_RED = (255, 0, 0)
 
 # Sizes and dimensions
 MINE_SIZE = 25
@@ -80,7 +81,17 @@ def create_window(width, height, title, icon=None):
     return screen
 
 
-def quit_arena():
+def quit_arena(message):
+    # screen.fill(COLOR_BLACK)
+
+    font = pygame.font.Font(None, 72)
+    text = font.render(message.upper(), True, COLOR_RED)
+    text_rect = text.get_rect(center=(arena_globals.SCREEN_WIDTH // 2, arena_globals.SCREEN_HEIGHT // 2))
+
+    screen.blit(text, text_rect)
+    pygame.display.flip()
+
+    pygame.time.wait(2000)  # Show message for 2 seconds
     pygame.quit()
     sys.exit()
 
@@ -88,7 +99,7 @@ def quit_arena():
 def handle_input():
     for event in pygame.event.get():
         if event.type == pygame.locals.QUIT:
-            quit_arena()
+            quit_arena("Goodbye!")
 
 
 # Functions pertaining to bullets
@@ -230,6 +241,7 @@ def process_bots():
     # If last bot standing, perform victory dance!
     if len(arena_globals.bots) == 1:
         # TODO YONAH: Add winner message
+        quit_arena(f"{bots[0].name} wins!")
         return
 
     for bot in arena_globals.bots:
@@ -379,10 +391,9 @@ explosion_img = load_image(EXPLOSION_IMG_FILE)
 
 
 # Main Loop
-while 1:
+for turn_counter in range(arena_globals.MAX_TURNS):  # Run for a fixed number of turns
     # Set the title which also displays the FPS
-    pygame.display.set_caption(SCREEN_TITLE + ' - FPS: ' +
-                               str(round(fps_clock.get_fps(), 1)))
+    pygame.display.set_caption(SCREEN_TITLE + f'Turn: {turn_counter}')
 
     handle_input()
     process_bots()
@@ -392,8 +403,8 @@ while 1:
     # Clear screen and draw background
     screen.fill(COLOR_BLACK)
     screen.blit(arena_bg, (arena_globals.STATS_BAR_W, 0))
-    draw_grid()
 
+    draw_grid()
     draw_char_panels()
     draw_mines()
     draw_bullets()
@@ -402,4 +413,4 @@ while 1:
 
     pygame.display.flip()
 
-    fps_clock.tick(FPS)
+quit_arena("Game Over!")
