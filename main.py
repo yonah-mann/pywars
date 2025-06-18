@@ -50,7 +50,7 @@ SCREEN_TITLE = 'PyWars'
 FPS = 30
 
 # Miscellaneous
-BOT_START_OFFSET = 10
+BOT_START_OFFSET = 0
 BOT_IMG_EXT = '.jpg'
 BULLET_DAMAGE = 5
 
@@ -380,7 +380,6 @@ explosion_img = load_image(EXPLOSION_IMG_FILE)
 
 # Main Loop
 while 1:
-    from time import sleep; sleep(1)
     # Set the title which also displays the FPS
     pygame.display.set_caption(SCREEN_TITLE + ' - FPS: ' +
                                str(round(fps_clock.get_fps(), 1)))
