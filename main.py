@@ -39,6 +39,7 @@ EXPLOSION_IMG_FILE = 'images/explosion.jpg'
 COLOR_BLACK = (0, 0, 0)
 COLOR_WHITE = (255, 255, 255)
 COLOR_RED = (255, 0, 0)
+COLOR_LIGHT_RED = (255, 200, 200)
 
 # Sizes and dimensions
 MINE_SIZE = 25
@@ -82,8 +83,6 @@ def create_window(width, height, title, icon=None):
 
 
 def quit_arena(message):
-    # screen.fill(COLOR_BLACK)
-
     font = pygame.font.Font(None, 72)
     text = font.render(message.upper(), True, COLOR_RED)
     text_rect = text.get_rect(center=(arena_globals.SCREEN_WIDTH // 2, arena_globals.SCREEN_HEIGHT // 2))
@@ -92,6 +91,7 @@ def quit_arena(message):
     pygame.display.flip()
 
     pygame.time.wait(2000)  # Show message for 2 seconds
+    print(f"Quitting arena: {message}")
     pygame.quit()
     sys.exit()
 
@@ -370,10 +370,10 @@ def process_explosions():
 
 def draw_grid():
     for x in range(arena_globals.ARENA_START_X, arena_globals.ARENA_END_X, arena_globals.GRID_SIZE):
-        pygame.draw.line(screen, (arena_globals.GRID_SIZE, arena_globals.GRID_SIZE, arena_globals.GRID_SIZE), (x, arena_globals.ARENA_START_Y), (x, arena_globals.ARENA_END_Y))
+        pygame.draw.line(screen, COLOR_LIGHT_RED, (x, arena_globals.ARENA_START_Y), (x, arena_globals.ARENA_END_Y))
 
     for y in range(arena_globals.ARENA_START_Y, arena_globals.ARENA_END_Y, arena_globals.GRID_SIZE):
-        pygame.draw.line(screen, (arena_globals.GRID_SIZE, arena_globals.GRID_SIZE, arena_globals.GRID_SIZE), (arena_globals.ARENA_START_X, y), (arena_globals.ARENA_END_X, y))
+        pygame.draw.line(screen, COLOR_LIGHT_RED, (arena_globals.ARENA_START_X, y), (arena_globals.ARENA_END_X, y))
 
 
 # Initialize some stuff
